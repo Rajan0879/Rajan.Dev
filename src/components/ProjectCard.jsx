@@ -71,7 +71,7 @@ const ProjectCard = ({ project }) => {
               style={{ color: '#9ca3af' }}
               title="GitHub Coming Soon"
             >
-              Coming Soon
+              N/A
             </span>
           )}
 
