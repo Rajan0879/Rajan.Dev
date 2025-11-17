@@ -14,7 +14,7 @@ export const projects = [
       "A full-stack learning platform developed during my Software Developer Internship. Built using Next.js for the frontend and Node.js/Firebase for the backend. Includes secure authentication, optimized APIs, and efficient user management.",
     image: learnees,
     tags: ["Next.js", "Node.js", "Firebase", "Tailwind CSS"],
-    demo: "https://yourDemoLinkHere.com", // optional
+    demo: "https://learnees.com/", // optional
     featured: true,
   },
 
