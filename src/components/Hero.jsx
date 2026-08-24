@@ -11,8 +11,11 @@ const Hero = () => {
   const heroY = useTransform(scrollY, [0, 600], [0, 60]);
   const heroOpacity = useTransform(scrollY, [0, 450], [1, 0.2]);
 
+  const shineRef = useRef(null);
+
   useEffect(() => {
     const card = photoCardRef.current;
+    const shine = shineRef.current;
     if (!card) return;
 
     const handleMouseMove = (e) => {
@@ -21,36 +24,60 @@ const Hero = () => {
       const cardCenterX = rect.left + rect.width / 2;
       const cardCenterY = rect.top + rect.height / 2;
 
-      const mouseX = e.clientX - cardCenterX;
-      const mouseY = e.clientY - cardCenterY;
+      // Mouse distance relative to card center (-1 to 1 normalized range)
+      const deltaX = (e.clientX - cardCenterX) / (window.innerWidth / 2);
+      const deltaY = (e.clientY - cardCenterY) / (window.innerHeight / 2);
 
-      const rotateX = (-mouseY / rect.height) * 10;
-      const rotateY = (mouseX / rect.width) * 10;
+      // Deep responsive 3D bend
+      const rotateX = -deltaY * 22;
+      const rotateY = deltaX * 22;
+      const moveX = deltaX * 12;
+      const moveY = deltaY * 12;
 
       gsap.to(card, {
         rotateX: rotateX,
         rotateY: rotateY,
-        transformPerspective: 1200,
-        ease: "power3.out",
-        duration: 0.6,
+        x: moveX,
+        y: moveY,
+        transformPerspective: 900,
+        ease: "power2.out",
+        duration: 0.35,
       });
+
+      if (shine) {
+        const shineX = (e.clientX - rect.left) / rect.width * 100;
+        const shineY = (e.clientY - rect.top) / rect.height * 100;
+        gsap.to(shine, {
+          background: `radial-gradient(circle at ${shineX}% ${shineY}%, rgba(255,255,255,0.18) 0%, transparent 60%)`,
+          ease: "power1.out",
+          duration: 0.2,
+        });
+      }
     };
 
     const handleMouseLeave = () => {
       gsap.to(card, {
         rotateX: 0,
         rotateY: 0,
+        x: 0,
+        y: 0,
         ease: "power3.out",
-        duration: 0.9,
+        duration: 0.8,
       });
+      if (shine) {
+        gsap.to(shine, {
+          background: "transparent",
+          duration: 0.5,
+        });
+      }
     };
 
-    window.addEventListener("mousemove", handleMouseMove);
-    card.addEventListener("mouseleave", handleMouseLeave);
+    window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    document.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
-      if (card) card.removeEventListener("mouseleave", handleMouseLeave);
+      document.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
 
@@ -212,6 +239,9 @@ const Hero = () => {
 
                   {/* Gradient Scrim */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+
+                  {/* Specular Mouse Light Shine */}
+                  <div ref={shineRef} className="absolute inset-0 pointer-events-none transition-opacity duration-200" />
 
                   {/* Bottom Meta Inside Portrait */}
                   <div className="absolute bottom-4 left-4 right-4 p-3.5 rounded-2xl bg-black/60 backdrop-blur-xl border border-white/[0.08] flex items-center justify-between">

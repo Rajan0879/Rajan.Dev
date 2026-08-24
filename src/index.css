@@ -39,6 +39,27 @@
   }
 }
 
+/* Lenis Smooth Scrolling Optimization */
+html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
 /* Luxury Typography Utilities */
 .font-display {
   font-family: 'Outfit', 'Plus Jakarta Sans', sans-serif;

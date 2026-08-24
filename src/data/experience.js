@@ -43,5 +43,14 @@ export const education = [
     period: "2021 – 2025",
     grade: "SGPA: 7.2",
     details: "Focused on Data Structures & Algorithms, Object-Oriented Programming, Database Management Systems (DBMS), Operating Systems, Computer Networks, and Web Application Architecture."
+  },
+  {
+    degree: "Intermediate (Class XII)",
+    field: "Science Stream",
+    institution: "Sri Sai Inter College",
+    location: "Uttar Pradesh, India",
+    period: "2019 – 2021",
+    grade: "83.8% (State Board)",
+    details: "Completed Higher Secondary education in Science Stream under UP State Board with 83.8% score."
   }
 ];

@@ -106,7 +106,7 @@ const Experience = () => {
               Education
             </span>
             <h3 className="text-2xl sm:text-4xl font-display font-bold text-white">
-              Academic Degree.
+              Education & Qualifications.
             </h3>
           </div>
 
