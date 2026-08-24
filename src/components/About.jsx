@@ -64,7 +64,13 @@ const About = () => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col items-start mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 45 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-start mb-20"
+        >
           <span className="text-xs uppercase tracking-widest text-rose-400 font-mono-code mb-3">
             About
           </span>
@@ -72,16 +78,16 @@ const About = () => {
             Engineering with precision <br className="hidden sm:inline" />
             <span className="text-zinc-500 font-light">&</span> creative intent.
           </h2>
-        </div>
+        </motion.div>
 
         {/* Editorial Story + Stats Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column — Personal Narrative */}
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
             className="lg:col-span-7 space-y-8"
           >
             <div className="p-8 sm:p-10 rounded-3xl bg-white/[0.02] border border-white/[0.07] backdrop-blur-xl relative">
@@ -102,8 +108,12 @@ const About = () => {
             {/* Engineering Pillars */}
             <div className="space-y-3 pt-2">
               {pillars.map((pillar, idx) => (
-                <div
+                <motion.div
                   key={idx}
+                  initial={{ opacity: 0, x: -25 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true, amount: 0.3 }}
+                  transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className="p-5 rounded-2xl bg-white/[0.015] border border-white/[0.05] hover:border-rose-500/20 transition-colors"
                 >
                   <h4 className="text-base font-semibold text-white mb-1.5 flex items-center gap-2">
@@ -113,7 +123,7 @@ const About = () => {
                   <p className="text-xs sm:text-sm text-zinc-400 leading-relaxed pl-3.5">
                     {pillar.description}
                   </p>
-                </div>
+                </motion.div>
               ))}
             </div>
 
@@ -145,10 +155,10 @@ const About = () => {
             {stats.map((stat, index) => (
               <motion.div
                 key={index}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1, duration: 0.5 }}
+                initial={{ opacity: 0, y: 30, scale: 0.96 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ delay: index * 0.12, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
                 className="p-7 rounded-3xl bg-white/[0.02] border border-white/[0.07] hover:border-rose-500/30 transition-all duration-300 backdrop-blur-xl group"
               >
                 <div className="flex items-baseline gap-1.5">

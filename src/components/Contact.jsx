@@ -76,7 +76,13 @@ const Contact = () => {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col items-start mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 45 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-start mb-20"
+        >
           <span className="text-xs uppercase tracking-widest text-rose-400 font-mono-code mb-3 block">
             Contact
           </span>
@@ -84,11 +90,17 @@ const Contact = () => {
             Let's build something <br />
             <span className="text-rose-500">exceptional</span> together.
           </h2>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           {/* Left Column — Direct Contacts */}
-          <div className="lg:col-span-5 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 space-y-6"
+          >
             <div className="p-8 rounded-3xl bg-white/[0.015] border border-white/[0.07] backdrop-blur-xl">
               <h3 className="text-xl font-display font-bold text-white mb-2">
                 Have a project or opportunity?
@@ -163,10 +175,16 @@ const Contact = () => {
                 </a>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column — Minimalist Luxury Form */}
-          <div className="lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-7"
+          >
             <div className="p-8 sm:p-10 rounded-3xl bg-white/[0.015] border border-white/[0.07] backdrop-blur-xl">
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -287,7 +305,7 @@ const Contact = () => {
                 )}
               </form>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

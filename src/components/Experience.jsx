@@ -10,14 +10,20 @@ const Experience = () => {
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col items-start mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 45 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col items-start mb-20"
+        >
           <span className="text-xs uppercase tracking-widest text-rose-400 font-mono-code mb-3">
             Career
           </span>
           <h2 className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight text-white">
             Professional Experience.
           </h2>
-        </div>
+        </motion.div>
 
         {/* Timeline */}
         <div className="relative border-l border-white/[0.08] ml-4 sm:ml-8 space-y-12 sm:space-y-16">

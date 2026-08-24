@@ -4,7 +4,7 @@ export const skillCategories = [
   { id: "backend", name: "Backend & APIs" },
   { id: "database", name: "Databases" },
   { id: "state", name: "State & Forms" },
-  { id: "mobile", name: "Mobile Development" },
+  { id: "mobile", name: "Mobile App" },
   { id: "tools", name: "DevOps & Tools" },
   { id: "foundations", name: "Foundations" },
 ];
@@ -14,65 +14,74 @@ export const skills = [
   {
     name: "React.js",
     category: "frontend",
-    badge: "Core Stack",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    description: "Component lifecycle, custom hooks, virtual DOM optimization, SPA architecture."
+    badge: "Core",
+    level: 95,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/react/61DAFB",
   },
   {
     name: "Next.js",
     category: "frontend",
     badge: "Production",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg",
-    description: "App Router, SSR, SSG, Server Components, API routes & performance optimization."
+    level: 92,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/nextdotjs/white",
   },
   {
     name: "JavaScript (ES6+)",
     category: "frontend",
     badge: "Core",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
-    description: "Async/await, closures, prototypes, event loop, DOM manipulation & modular JS."
+    level: 94,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/javascript/F7DF1E",
   },
   {
     name: "Tailwind CSS",
     category: "frontend",
     badge: "Styling",
-    icon: "https://raw.githubusercontent.com/devicons/devicon/master/icons/tailwindcss/tailwindcss-original.svg",
-    description: "Utility-first modern design systems, custom themes, dark mode & responsiveness."
+    level: 96,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/tailwindcss/06B6D4",
   },
   {
     name: "ShadCN UI",
     category: "frontend",
     badge: "UI System",
-    icon: "https://raw.githubusercontent.com/radix-ui/primitives/main/packages/react/src/images/radix-icon.png",
-    description: "Accessible, customizable, headless Radix-based reusable component systems."
+    level: 90,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/shadcnui/white",
   },
   {
-    name: "GSAP",
+    name: "GSAP Motion",
     category: "frontend",
-    badge: "Motion",
-    icon: "https://cdn.worldvectorlogo.com/logos/gsap-greensock.svg",
-    description: "ScrollTrigger, timeline orchestrations, high-performance web animations."
+    badge: "Animation",
+    level: 85,
+    stars: 4,
+    icon: "https://cdn.simpleicons.org/greensock/88CE02",
   },
   {
     name: "Framer Motion",
     category: "frontend",
     badge: "Motion",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/framermotion/framermotion-original.svg",
-    description: "Spring physics, layout animations, exit transitions, gesture handling."
+    level: 90,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/framer/0055FF",
   },
   {
     name: "Styled Components",
     category: "frontend",
     badge: "CSS-in-JS",
-    icon: "https://raw.githubusercontent.com/styled-components/brand/master/styled-components.png",
-    description: "Dynamic theming, scoped styling, CSS-in-JS for enterprise React apps."
+    level: 88,
+    stars: 4,
+    icon: "https://cdn.simpleicons.org/styledcomponents/DB7093",
   },
   {
     name: "HTML5 & CSS3",
     category: "frontend",
     badge: "Standard",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
-    description: "Semantic HTML, web accessibility, Flexbox, Grid, CSS animations."
+    level: 98,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/html5/E34F26",
   },
 
   // State & Forms
@@ -80,36 +89,41 @@ export const skills = [
     name: "Zustand",
     category: "state",
     badge: "State",
-    icon: "https://raw.githubusercontent.com/pmndrs/zustand/main/docs/bear.jpg",
-    description: "Lightweight, un-opinionated reactive state management with zero boilerplate."
+    level: 92,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/redux/764ABC",
   },
   {
     name: "Redux Toolkit",
     category: "state",
     badge: "State",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/redux/redux-original.svg",
-    description: "Predictable state container, slices, RTK Query, middleware & async thunks."
+    level: 88,
+    stars: 4,
+    icon: "https://cdn.simpleicons.org/redux/764ABC",
   },
   {
     name: "React Hook Form",
     category: "state",
     badge: "Forms",
-    icon: "https://react-hook-form.com/images/logo/react-hook-form-logo-only.png",
-    description: "High-performance, minimal re-renders, uncontrolled forms with dynamic validation."
+    level: 94,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/reacthookform/EC5990",
   },
   {
-    name: "Zod",
+    name: "Zod Validation",
     category: "state",
-    badge: "Validation",
-    icon: "https://raw.githubusercontent.com/colinhacks/zod/master/logo.svg",
-    description: "TypeScript-first schema declaration, strict runtime data validation & error parsing."
+    badge: "Schemas",
+    level: 90,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/zod/3E67B1",
   },
   {
-    name: "Context API",
+    name: "React Context",
     category: "state",
-    badge: "Core",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
-    description: "Scoped state distribution and dependency injection across React trees."
+    badge: "State",
+    level: 95,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/react/61DAFB",
   },
 
   // Backend & APIs
@@ -117,68 +131,77 @@ export const skills = [
     name: "Node.js",
     category: "backend",
     badge: "Runtime",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
-    description: "Asynchronous I/O, event-driven backend microservices, REST server architectures."
+    level: 90,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/nodedotjs/5FA04E",
   },
   {
     name: "Express.js",
     category: "backend",
-    badge: "Framework",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/express/express-original.svg",
-    description: "Robust middleware pipeline, RESTful API design, route controllers, error handlers."
+    badge: "Backend",
+    level: 92,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/express/white",
   },
   {
-    name: "REST APIs",
+    name: "RESTful APIs",
     category: "backend",
     badge: "Architecture",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/fastapi/fastapi-original.svg",
-    description: "Scalable API design, HTTP status patterns, rate limiting, request validation."
+    level: 95,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/fastapi/009688",
   },
   {
-    name: "Firebase",
+    name: "Firebase Suite",
     category: "backend",
-    badge: "BaaS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg",
-    description: "Firestore, cloud authentication, real-time database, cloud functions & hosting."
+    badge: "Cloud BaaS",
+    level: 86,
+    stars: 4,
+    icon: "https://cdn.simpleicons.org/firebase/FFCA28",
   },
   {
-    name: "JWT Authentication",
+    name: "JWT & Auth",
     category: "backend",
     badge: "Security",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/oauth/oauth-original.svg",
-    description: "Stateless session authentication, token refresh flows, RBAC authorization."
+    level: 90,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/jsonwebtokens/white",
   },
 
   // Databases
   {
     name: "PostgreSQL",
     category: "database",
-    badge: "SQL",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg",
-    description: "Relational database modeling, complex SQL joins, indexing, query optimization."
+    badge: "Relational",
+    level: 88,
+    stars: 4,
+    icon: "https://cdn.simpleicons.org/postgresql/4169E1",
   },
   {
     name: "MongoDB",
     category: "database",
     badge: "NoSQL",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mongodb/mongodb-original.svg",
-    description: "Document aggregation pipelines, schema design with Mongoose, indexing."
+    level: 92,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/mongodb/47A248",
   },
 
-  // Mobile
+  // Mobile Development
   {
     name: "Capacitor",
     category: "mobile",
-    badge: "Cross-Platform",
-    icon: "https://raw.githubusercontent.com/ionic-team/capacitor/main/assets/logo.png",
-    description: "Packaging modern Next.js/React web apps into native Android APKs/bundles."
+    badge: "Native Bridge",
+    level: 88,
+    stars: 4,
+    icon: "https://cdn.simpleicons.org/capacitor/119EFF",
   },
   {
-    name: "Android Development",
+    name: "Android Mobile",
     category: "mobile",
-    badge: "Mobile",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg",
-    description: "Mobile viewport handling, native device bridge, camera & storage permissions."
+    badge: "Mobile Apps",
+    level: 85,
+    stars: 4,
+    icon: "https://cdn.simpleicons.org/android/3DDC84",
   },
 
   // DevOps & Tools
@@ -186,22 +209,25 @@ export const skills = [
     name: "Docker",
     category: "tools",
     badge: "Containers",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
-    description: "Containerization, multi-stage Dockerfiles, consistent local/prod environments."
+    level: 82,
+    stars: 4,
+    icon: "https://cdn.simpleicons.org/docker/2496ED",
   },
   {
     name: "Git & GitHub",
     category: "tools",
     badge: "VCS",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
-    description: "Branching workflows, pull requests, semantic versioning, merge conflict resolution."
+    level: 95,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/git/F05032",
   },
   {
-    name: "CI/CD & Deployment",
+    name: "Vercel / Netlify",
     category: "tools",
-    badge: "DevOps",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg",
-    description: "Automated pipelines, Vercel, Netlify, Render cloud deployments & continuous delivery."
+    badge: "Cloud Deploy",
+    level: 92,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/vercel/white",
   },
 
   // Languages & Foundations
@@ -209,15 +235,17 @@ export const skills = [
     name: "C / C++",
     category: "foundations",
     badge: "Language",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg",
-    description: "Low-level memory management, pointers, OOP, high-performance problem solving."
+    level: 86,
+    stars: 4,
+    icon: "https://cdn.simpleicons.org/cplusplus/00599C",
   },
   {
-    name: "DSA & Problem Solving",
+    name: "DSA (500+ Solved)",
     category: "foundations",
-    badge: "Foundations",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
-    description: "100+ problems solved on LeetCode & platforms. Trees, graphs, DP, recursion."
+    badge: "Algorithms",
+    level: 90,
+    stars: 5,
+    icon: "https://cdn.simpleicons.org/leetcode/FFA116",
   }
 ];
 

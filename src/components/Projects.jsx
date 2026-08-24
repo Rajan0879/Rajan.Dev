@@ -25,7 +25,13 @@ const Projects = () => {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-20">
+        <motion.div
+          initial={{ opacity: 0, y: 45 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+          className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16 sm:mb-20"
+        >
           <div>
             <span className="text-xs uppercase tracking-widest text-rose-400 font-mono-code mb-3 block">
               Portfolio Showcase
@@ -54,11 +60,17 @@ const Projects = () => {
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
         {/* 1. Flagship Spotlight Showcase */}
         {spotlightProject && (
-          <div className="mb-12">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+            className="mb-12"
+          >
             <div className="group relative rounded-[32px] bg-[#0c0c10] border border-white/[0.08] hover:border-rose-500/30 p-6 sm:p-9 lg:p-11 transition-all duration-300 shadow-2xl overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                 {/* Visual Preview */}
@@ -135,13 +147,21 @@ const Projects = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
         )}
 
         {/* 2. Grid of Secondary Projects */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {restProjects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+            <motion.div
+              key={project.id}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6, delay: (index % 3) * 0.1, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <ProjectCard project={project} index={index} />
+            </motion.div>
           ))}
         </div>
       </div>
