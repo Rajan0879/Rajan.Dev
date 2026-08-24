@@ -2,6 +2,7 @@ import { useState, useMemo } from "react";
 import ProjectCard from "./ProjectCard";
 import { projects, projectCategories } from "../data/projects";
 import { ArrowUpRight, Github, Sparkles, FolderGit2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 const Projects = () => {
   const [activeCategory, setActiveCategory] = useState("all");
