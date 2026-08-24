@@ -1,94 +1,62 @@
-import { ArrowUpRight, Github, Sparkles } from "lucide-react";
+import { ArrowUpRight, Github } from "lucide-react";
 import { motion } from "framer-motion";
 
 const ProjectCard = ({ project, index }) => {
   const isEven = index % 2 === 0;
 
-  // Featured Project Editorial Showcase (Wide alternating row layout)
   if (project.featured) {
     return (
       <motion.div
-        initial={{ opacity: 0, y: 40 }}
+        initial={{ opacity: 0, y: 35 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, margin: "-80px" }}
+        viewport={{ once: true, margin: "-60px" }}
         transition={{ duration: 0.7, delay: 0.1 }}
-        className="group relative rounded-3xl bg-[#0e0e12] border border-white/10 hover:border-red-500/40 p-6 sm:p-8 lg:p-10 transition-all duration-500 shadow-2xl overflow-hidden backdrop-blur-xl"
+        className="group relative rounded-[32px] bg-white/[0.015] border border-white/[0.07] hover:border-rose-500/25 p-7 sm:p-9 lg:p-11 transition-all duration-500 backdrop-blur-2xl overflow-hidden"
       >
-        {/* Subtle Ambient Red Gradient Accent in Background */}
-        <div
-          className={`absolute -inset-1 bg-gradient-to-r ${project.accent || "from-red-600/10 to-transparent"} opacity-0 group-hover:opacity-100 transition-opacity duration-700 blur-xl pointer-events-none`}
-        />
-
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center relative z-10">
-          {/* Visual Preview Side */}
+          {/* Visual Preview */}
           <div
             className={`lg:col-span-7 ${
               isEven ? "lg:order-1" : "lg:order-2"
-            } relative rounded-2xl overflow-hidden border border-white/10 bg-black/60 shadow-2xl group-hover:border-red-500/30 transition-colors`}
+            } relative rounded-2xl overflow-hidden border border-white/[0.08] bg-zinc-950 shadow-2xl group-hover:border-rose-500/25 transition-colors`}
           >
-            {/* Browser / Frame Top Bar */}
-            <div className="flex items-center justify-between px-4 py-2.5 bg-black/80 border-b border-white/10">
-              <div className="flex items-center gap-1.5">
-                <span className="w-2.5 h-2.5 rounded-full bg-red-500/80" />
-                <span className="w-2.5 h-2.5 rounded-full bg-amber-500/60" />
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500/60" />
-              </div>
-              <span className="text-[11px] font-mono-code text-zinc-500 tracking-wider">
-                {project.tagline}
-              </span>
-              <span className="text-[11px] font-mono-code text-red-400 font-bold">
-                {project.featuredNumber}
-              </span>
-            </div>
-
-            {/* Project Image Showcase with Zoom and Action Overlay */}
-            <div className="relative aspect-[16/10] overflow-hidden bg-zinc-950">
+            <div className="relative aspect-[16/10] overflow-hidden">
               <img
                 src={project.image}
                 alt={project.title}
                 loading="lazy"
-                className="w-full h-full object-cover object-top filter brightness-95 contrast-105 group-hover:scale-105 group-hover:brightness-100 transition-transform duration-700 ease-out"
+                className="w-full h-full object-cover object-top filter contrast-[103%] group-hover:scale-105 transition-transform duration-700 ease-out"
               />
-
-              {/* Gradient Scrim */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-300" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-60 group-hover:opacity-30 transition-opacity duration-300" />
             </div>
           </div>
 
-          {/* Text & Meta Side */}
+          {/* Text Info */}
           <div
             className={`lg:col-span-5 ${
               isEven ? "lg:order-2" : "lg:order-1"
-            } flex flex-col justify-between space-y-5`}
+            } flex flex-col justify-between space-y-6`}
           >
             <div>
-              {/* Category & Index Pill */}
-              <div className="flex items-center gap-3 mb-3">
-                <span className="text-red-500 font-mono-code text-sm font-bold tracking-widest uppercase">
-                  {project.featuredNumber} //
-                </span>
-                <span className="px-2.5 py-0.5 rounded-full text-[11px] font-mono-code uppercase tracking-wider bg-white/5 text-zinc-400 border border-white/10">
-                  {project.tagline}
-                </span>
-              </div>
+              <span className="text-xs font-mono-code text-rose-400 tracking-wider uppercase mb-2 block">
+                {project.tagline}
+              </span>
 
-              {/* Title */}
-              <h3 className="text-2xl sm:text-3xl font-display font-extrabold text-white tracking-tight group-hover:text-red-400 transition-colors">
+              <h3 className="text-2xl sm:text-3xl font-display font-bold text-white tracking-tight group-hover:text-rose-400 transition-colors">
                 {project.title}
               </h3>
 
-              {/* Description */}
               <p className="mt-4 text-sm sm:text-base text-zinc-400 font-body leading-relaxed">
                 {project.description}
               </p>
             </div>
 
-            {/* Tech Stack Badges */}
-            <div className="flex flex-wrap gap-2 pt-2">
+            {/* Tech Tags */}
+            <div className="flex flex-wrap gap-2">
               {project.tags.map((tag, tIdx) => (
                 <span
                   key={tIdx}
-                  className="px-2.5 py-1 rounded-lg text-xs font-mono-code bg-white/[0.04] text-zinc-300 border border-white/5 group-hover:border-red-500/20 transition-colors"
+                  className="px-3 py-1 rounded-full text-xs font-mono-code bg-white/[0.03] text-zinc-300 border border-white/[0.06]"
                 >
                   {tag}
                 </span>
@@ -96,36 +64,32 @@ const ProjectCard = ({ project, index }) => {
             </div>
 
             {/* Action Buttons */}
-            <div className="flex items-center gap-4 pt-4 border-t border-white/10">
+            <div className="flex items-center gap-4 pt-2">
               {project.demo && (
                 <a
                   href={project.demo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group/btn inline-flex items-center gap-2 px-5 py-2.5 bg-red-600 hover:bg-red-500 text-white font-semibold text-xs uppercase tracking-wider rounded-xl shadow-lg shadow-red-600/30 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                  className="group/btn inline-flex items-center gap-2 px-6 py-3 bg-rose-600 hover:bg-rose-500 text-white font-medium text-xs rounded-full shadow-lg shadow-rose-600/20 transition-all hover:scale-[1.02] active:scale-[0.98]"
                 >
                   <span>Live Platform</span>
                   <ArrowUpRight
-                    size={15}
+                    size={14}
                     className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
                   />
                 </a>
               )}
 
-              {project.github ? (
+              {project.github && (
                 <a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 px-4 py-2.5 bg-white/5 hover:bg-white/10 text-zinc-300 hover:text-white font-mono-code text-xs uppercase tracking-wider rounded-xl border border-white/10 hover:border-red-500/30 transition-colors"
+                  className="inline-flex items-center gap-2 px-5 py-3 bg-white/[0.03] hover:bg-white/[0.08] text-zinc-300 hover:text-white font-medium text-xs rounded-full border border-white/[0.08] hover:border-rose-500/20 transition-colors"
                 >
-                  <Github size={15} />
+                  <Github size={14} />
                   <span>Source Code</span>
                 </a>
-              ) : (
-                <span className="text-[11px] font-mono-code text-zinc-500">
-                  Commercial Project
-                </span>
               )}
             </div>
           </div>
@@ -134,58 +98,50 @@ const ProjectCard = ({ project, index }) => {
     );
   }
 
-  // Standard Project Card (for secondary / grid items)
   return (
     <motion.div
-      initial={{ opacity: 0, y: 30 }}
+      initial={{ opacity: 0, y: 25 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
+      viewport={{ once: true, margin: "-30px" }}
       transition={{ duration: 0.5, delay: index * 0.08 }}
-      className="group flex flex-col justify-between rounded-2xl bg-[#0e0e12] border border-white/10 hover:border-red-500/40 p-5 transition-all duration-300 hover:-translate-y-1 shadow-xl overflow-hidden"
+      className="group flex flex-col justify-between rounded-3xl bg-white/[0.015] border border-white/[0.06] hover:border-rose-500/25 p-6 transition-all duration-300 hover:-translate-y-1 backdrop-blur-xl"
     >
-      {/* Image Preview Container */}
-      <div className="relative aspect-[16/10] rounded-xl overflow-hidden bg-black/60 border border-white/5 mb-5 group-hover:border-red-500/20 transition-colors">
+      <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-zinc-950 border border-white/[0.06] mb-5">
         <img
           src={project.image}
           alt={project.title}
           loading="lazy"
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-        <span className="absolute top-2.5 right-2.5 px-2 py-0.5 rounded-full text-[10px] font-mono-code bg-black/80 text-zinc-300 border border-white/10 backdrop-blur-md">
-          {project.featuredNumber}
-        </span>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
       </div>
 
-      {/* Info Container */}
       <div className="flex-1 flex flex-col justify-between">
         <div>
-          <p className="text-xs font-mono-code text-red-400 uppercase tracking-wider mb-1">
+          <span className="text-[11px] font-mono-code text-rose-400 uppercase tracking-wider block mb-1.5">
             {project.tagline}
-          </p>
-          <h4 className="text-xl font-display font-bold text-white group-hover:text-red-400 transition-colors mb-2">
+          </span>
+          <h4 className="text-xl font-display font-bold text-white group-hover:text-rose-400 transition-colors mb-2.5">
             {project.title}
           </h4>
-          <p className="text-xs sm:text-sm text-zinc-400 font-body line-clamp-3 leading-relaxed mb-4">
+          <p className="text-xs sm:text-sm text-zinc-400 font-body line-clamp-3 leading-relaxed mb-5">
             {project.description}
           </p>
         </div>
 
         <div>
-          {/* Tags */}
-          <div className="flex flex-wrap gap-1.5 mb-4">
+          <div className="flex flex-wrap gap-1.5 mb-5">
             {project.tags.slice(0, 4).map((tag, tIdx) => (
               <span
                 key={tIdx}
-                className="px-2 py-0.5 rounded text-[11px] font-mono-code bg-white/[0.03] text-zinc-400 border border-white/5"
+                className="px-2.5 py-0.5 rounded-full text-[11px] font-mono-code bg-white/[0.03] text-zinc-400 border border-white/[0.05]"
               >
                 {tag}
               </span>
             ))}
           </div>
 
-          {/* Action Links */}
-          <div className="flex items-center justify-between pt-3 border-t border-white/10">
+          <div className="flex items-center justify-between pt-3 border-t border-white/[0.05]">
             {project.github ? (
               <a
                 href={project.github}
@@ -194,7 +150,7 @@ const ProjectCard = ({ project, index }) => {
                 aria-label={`GitHub source for ${project.title}`}
                 className="flex items-center gap-1.5 text-xs font-mono-code text-zinc-400 hover:text-white transition-colors"
               >
-                <Github size={14} />
+                <Github size={13} />
                 <span>Code</span>
               </a>
             ) : (
@@ -208,10 +164,10 @@ const ProjectCard = ({ project, index }) => {
                 href={project.demo}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex items-center gap-1 text-xs font-semibold text-red-400 hover:text-red-300 transition-colors"
+                className="flex items-center gap-1 text-xs font-semibold text-rose-400 hover:text-rose-300 transition-colors"
               >
-                <span>Live Preview</span>
-                <ArrowUpRight size={14} />
+                <span>Preview</span>
+                <ArrowUpRight size={13} />
               </a>
             )}
           </div>

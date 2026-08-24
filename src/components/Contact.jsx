@@ -1,7 +1,8 @@
 import { useState } from "react";
-import emailjs from "@emailjs/browser";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, ArrowUpRight, CheckCircle2, AlertCircle, Sparkles } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin, ArrowUpRight, CheckCircle2, AlertCircle } from "lucide-react";
 import { motion } from "framer-motion";
+import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -10,9 +11,8 @@ const Contact = () => {
     subject: "",
     message: "",
   });
-
-  const [submitting, setSubmitting] = useState(false);
-  const [status, setStatus] = useState(null); // 'success' | 'error' | null
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [status, setStatus] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +21,7 @@ const Contact = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setSubmitting(true);
+    setIsSubmitting(true);
     setStatus(null);
 
     const templateParams = {
@@ -38,7 +38,7 @@ const Contact = () => {
       to_email: "rajanverma0879@gmail.com",
       recipient: "rajanverma0879@gmail.com",
 
-      subject: formData.subject,
+      subject: formData.subject || "New Inquiry from Portfolio",
       message: formData.message,
     };
 
@@ -51,225 +51,224 @@ const Contact = () => {
       );
       console.log("Email sent successfully:", res.status, res.text);
       setStatus("success");
+      toast.success("Message delivered successfully! I will reply to you shortly.", {
+        duration: 5000,
+      });
       setFormData({ name: "", email: "", subject: "", message: "" });
       setTimeout(() => setStatus(null), 6000);
     } catch (error) {
       console.error("EmailJS Error:", error);
       setStatus("error");
+      const errorMsg = error?.text || error?.message || "Failed to deliver message.";
+      toast.error(`Unable to send: ${errorMsg}`, {
+        duration: 6000,
+      });
       setTimeout(() => setStatus(null), 6000);
     } finally {
-      setSubmitting(false);
+      setIsSubmitting(false);
     }
   };
 
   return (
     <section
       id="contact"
-      className="relative py-24 sm:py-36 bg-[#060608] overflow-hidden border-t border-white/5"
+      className="relative py-28 sm:py-36 bg-[#060608] overflow-hidden border-t border-white/[0.06]"
     >
-      {/* Ambient Red Lighting */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[400px] bg-red-600/10 rounded-full blur-[180px] pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-red-800/10 rounded-full blur-[140px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        {/* Massive Editorial Closing Headline */}
-        <div className="text-center max-w-4xl mx-auto mb-16 sm:mb-24">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-red-500/10 border border-red-500/20 text-red-400 text-xs font-mono-code uppercase tracking-widest mb-6">
-            <Sparkles size={13} />
-            <span>06 // Let's Connect</span>
-          </div>
-
-          <h2 className="font-display font-extrabold text-4xl sm:text-6xl lg:text-7xl xl:text-8xl tracking-tight leading-[0.95] uppercase text-white">
-            LET'S BUILD <br />
-            <span className="text-red-500">SOMETHING</span> REAL<span className="text-red-500">.</span>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+        {/* Section Header */}
+        <div className="flex flex-col items-start mb-20">
+          <span className="text-xs uppercase tracking-widest text-rose-400 font-mono-code mb-3 block">
+            Contact
+          </span>
+          <h2 className="text-3xl sm:text-5xl lg:text-6xl font-display font-bold tracking-tight text-white max-w-2xl leading-[1.05]">
+            Let's build something <br />
+            <span className="text-rose-500">exceptional</span> together.
           </h2>
-
-          <p className="mt-6 text-base sm:text-xl text-zinc-400 font-body max-w-2xl mx-auto leading-relaxed">
-            Have a project in mind, seeking a passionate full-stack engineer, or want to collaborate? My inbox is always open.
-          </p>
         </div>
 
-        {/* Contact Grid: Info Cards + Glass Form */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
-          {/* Left Column: Direct Reach Cards */}
-          <div className="lg:col-span-5 space-y-4">
-            {/* Email Card */}
-            <a
-              href="mailto:rajanverma0879@gmail.com"
-              className="group p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-red-500/40 backdrop-blur-md transition-all duration-300 flex items-center justify-between block hover:-translate-y-1"
-            >
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-xl bg-red-500/10 text-red-400 group-hover:bg-red-500/20 transition-colors">
-                  <Mail size={22} />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+          {/* Left Column — Direct Contacts */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="p-8 rounded-3xl bg-white/[0.015] border border-white/[0.07] backdrop-blur-xl">
+              <h3 className="text-xl font-display font-bold text-white mb-2">
+                Have a project or opportunity?
+              </h3>
+              <p className="text-sm text-zinc-400 font-body leading-relaxed mb-8">
+                I'm always open to discussing new engineering challenges, full-stack architecture roles, and creative tech collaborations.
+              </p>
+
+              <div className="space-y-4">
+                <a
+                  href="mailto:rajanverma0879@gmail.com"
+                  className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-rose-500/30 transition-colors group"
+                >
+                  <div className="p-2.5 rounded-xl bg-rose-500/10 text-rose-400">
+                    <Mail size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-zinc-500 font-mono-code">Direct Email</p>
+                    <p className="text-sm font-medium text-white group-hover:text-rose-400 transition-colors">
+                      rajanverma0879@gmail.com
+                    </p>
+                  </div>
+                </a>
+
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                  <div className="p-2.5 rounded-xl bg-white/[0.04] text-zinc-400">
+                    <MapPin size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-zinc-500 font-mono-code">Location</p>
+                    <p className="text-sm font-medium text-white">
+                      Lucknow / NCR, India • Remote Worldwide
+                    </p>
+                  </div>
                 </div>
-                <div>
-                  <p className="text-xs font-mono-code text-zinc-500 uppercase">Direct Email</p>
-                  <p className="text-sm sm:text-base font-bold text-white group-hover:text-red-400 transition-colors">
-                    rajanverma0879@gmail.com
-                  </p>
+
+                <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
+                  <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-400">
+                    <CheckCircle2 size={18} />
+                  </div>
+                  <div>
+                    <p className="text-xs text-zinc-500 font-mono-code">Current Status</p>
+                    <p className="text-sm font-medium text-white">
+                      Available for SDE-1 / Full-Stack Roles
+                    </p>
+                  </div>
                 </div>
               </div>
-              <ArrowUpRight size={18} className="text-zinc-500 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
-            </a>
 
-            {/* Phone Card */}
-            <a
-              href="tel:+919956561803"
-              className="group p-6 rounded-2xl bg-white/[0.02] border border-white/10 hover:border-red-500/40 backdrop-blur-md transition-all duration-300 flex items-center justify-between block hover:-translate-y-1"
-            >
-              <div className="flex items-center gap-4">
-                <div className="p-3 rounded-xl bg-red-500/10 text-red-400 group-hover:bg-red-500/20 transition-colors">
-                  <Phone size={22} />
-                </div>
-                <div>
-                  <p className="text-xs font-mono-code text-zinc-500 uppercase">Phone & WhatsApp</p>
-                  <p className="text-sm sm:text-base font-bold text-white group-hover:text-red-400 transition-colors">
-                    +91-9956561803
-                  </p>
-                </div>
+              {/* Social Grid */}
+              <div className="pt-6 mt-6 border-t border-white/[0.05] grid grid-cols-2 gap-3">
+                <a
+                  href="https://linkedin.com/in/rajanverma"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-rose-500/30 hover:bg-white/[0.05] transition-all flex items-center justify-center gap-2 text-xs font-medium text-zinc-300 hover:text-white"
+                >
+                  <Linkedin size={15} className="text-rose-400" />
+                  <span>LinkedIn</span>
+                  <ArrowUpRight size={13} className="text-zinc-500" />
+                </a>
+
+                <a
+                  href="https://github.com/boylish"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-rose-500/30 hover:bg-white/[0.05] transition-all flex items-center justify-center gap-2 text-xs font-medium text-zinc-300 hover:text-white"
+                >
+                  <Github size={15} className="text-rose-400" />
+                  <span>GitHub</span>
+                  <ArrowUpRight size={13} className="text-zinc-500" />
+                </a>
               </div>
-              <ArrowUpRight size={18} className="text-zinc-500 group-hover:text-white group-hover:translate-x-0.5 transition-all" />
-            </a>
-
-            {/* Location & Status Card */}
-            <div className="p-6 rounded-2xl bg-white/[0.02] border border-white/10 backdrop-blur-md flex items-center gap-4">
-              <div className="p-3 rounded-xl bg-red-500/10 text-red-400">
-                <MapPin size={22} />
-              </div>
-              <div>
-                <p className="text-xs font-mono-code text-zinc-500 uppercase">Location & Timezone</p>
-                <p className="text-sm sm:text-base font-bold text-white">
-                  India (IST) • Available for Remote Worldwide
-                </p>
-              </div>
-            </div>
-
-            {/* Social Grid */}
-            <div className="pt-2 grid grid-cols-2 gap-3">
-              <a
-                href="https://linkedin.com/in/rajanverma"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 rounded-xl bg-white/[0.02] border border-white/10 hover:border-red-500/40 hover:bg-white/[0.05] transition-all flex items-center justify-center gap-2 text-xs font-mono-code uppercase font-bold text-zinc-300 hover:text-white group"
-              >
-                <Linkedin size={16} className="text-red-400" />
-                <span>LinkedIn</span>
-                <ArrowUpRight size={14} className="text-zinc-500 group-hover:text-white transition-colors" />
-              </a>
-
-              <a
-                href="https://github.com/boylish"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="p-4 rounded-xl bg-white/[0.02] border border-white/10 hover:border-red-500/40 hover:bg-white/[0.05] transition-all flex items-center justify-center gap-2 text-xs font-mono-code uppercase font-bold text-zinc-300 hover:text-white group"
-              >
-                <Github size={16} className="text-red-400" />
-                <span>GitHub</span>
-                <ArrowUpRight size={14} className="text-zinc-500 group-hover:text-white transition-colors" />
-              </a>
             </div>
           </div>
 
-          {/* Right Column: Dark Glassmorphic Contact Form */}
+          {/* Right Column — Minimalist Luxury Form */}
           <div className="lg:col-span-7">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="p-6 sm:p-8 lg:p-10 rounded-3xl bg-[#0e0e12] border border-white/10 backdrop-blur-xl shadow-2xl relative"
-            >
-              <h3 className="text-xl sm:text-2xl font-display font-bold text-white mb-2">
-                Send a Direct Message
-              </h3>
-              <p className="text-xs sm:text-sm text-zinc-400 font-body mb-6">
-                Fill in your details below and I will respond within 24 hours.
-              </p>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div className="p-8 sm:p-10 rounded-3xl bg-white/[0.015] border border-white/[0.07] backdrop-blur-xl">
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                   <div>
-                    <label className="block text-xs font-mono-code uppercase text-zinc-400 mb-1.5">
-                      Your Name <span className="text-red-500">*</span>
+                    <label
+                      htmlFor="name"
+                      className="block text-xs font-medium text-zinc-400 mb-2"
+                    >
+                      Your Name *
                     </label>
                     <input
                       type="text"
+                      id="name"
                       name="name"
-                      placeholder="e.g. Alex Morgan"
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/10 text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all font-body"
+                      placeholder="Alex Mercer"
+                      className="w-full px-4 py-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] focus:border-rose-500 focus:outline-none text-white text-sm placeholder:text-zinc-600 transition-colors"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-mono-code uppercase text-zinc-400 mb-1.5">
-                      Your Email <span className="text-red-500">*</span>
+                    <label
+                      htmlFor="email"
+                      className="block text-xs font-medium text-zinc-400 mb-2"
+                    >
+                      Your Email *
                     </label>
                     <input
                       type="email"
+                      id="email"
                       name="email"
-                      placeholder="alex@company.com"
                       value={formData.email}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/10 text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all font-body"
+                      placeholder="alex@example.com"
+                      className="w-full px-4 py-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] focus:border-rose-500 focus:outline-none text-white text-sm placeholder:text-zinc-600 transition-colors"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono-code uppercase text-zinc-400 mb-1.5">
-                    Subject <span className="text-red-500">*</span>
+                  <label
+                    htmlFor="subject"
+                    className="block text-xs font-medium text-zinc-400 mb-2"
+                  >
+                    Subject
                   </label>
                   <input
                     type="text"
+                    id="subject"
                     name="subject"
-                    placeholder="Project Inquiry / Job Opportunity"
                     value={formData.subject}
                     onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/10 text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all font-body"
+                    placeholder="Project Inquiry / Job Opportunity"
+                    className="w-full px-4 py-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] focus:border-rose-500 focus:outline-none text-white text-sm placeholder:text-zinc-600 transition-colors"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-mono-code uppercase text-zinc-400 mb-1.5">
-                    Message <span className="text-red-500">*</span>
+                  <label
+                    htmlFor="message"
+                    className="block text-xs font-medium text-zinc-400 mb-2"
+                  >
+                    Message *
                   </label>
                   <textarea
+                    id="message"
                     name="message"
-                    rows={5}
-                    placeholder="Tell me about your project, goals, or timeline..."
                     value={formData.message}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 rounded-xl bg-black/60 border border-white/10 text-white placeholder-zinc-600 text-sm focus:outline-none focus:border-red-500 focus:ring-1 focus:ring-red-500 transition-all font-body resize-none"
+                    rows={5}
+                    placeholder="Tell me about your product, project, or opportunity..."
+                    className="w-full px-4 py-3.5 rounded-2xl bg-white/[0.03] border border-white/[0.08] focus:border-rose-500 focus:outline-none text-white text-sm placeholder:text-zinc-600 resize-none transition-colors"
                   />
                 </div>
 
                 <button
                   type="submit"
-                  disabled={submitting}
-                  className="w-full group inline-flex items-center justify-center gap-2 py-4 px-6 rounded-xl bg-red-600 hover:bg-red-500 disabled:bg-zinc-800 disabled:text-zinc-500 text-white font-semibold text-sm uppercase tracking-wider shadow-lg shadow-red-600/30 hover:shadow-red-600/50 transition-all hover:scale-[1.01] active:scale-[0.99] cursor-pointer"
+                  disabled={isSubmitting}
+                  className="w-full group inline-flex items-center justify-center gap-2.5 py-4 px-6 rounded-full bg-rose-600 hover:bg-rose-500 disabled:bg-rose-900/50 text-white font-medium text-sm shadow-xl shadow-rose-600/25 hover:shadow-rose-600/40 hover:scale-[1.01] active:scale-[0.99] transition-all cursor-pointer"
                 >
-                  {submitting ? (
-                    <span>Transmitting Message...</span>
+                  {isSubmitting ? (
+                    <span className="flex items-center gap-2">
+                      <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                      <span>Sending Message...</span>
+                    </span>
                   ) : (
                     <>
                       <span>Send Message</span>
-                      <Send size={16} className="group-hover:translate-x-0.5 transition-transform" />
+                      <Send size={15} className="group-hover:translate-x-0.5 transition-transform" />
                     </>
                   )}
                 </button>
 
-                {/* Status Messages */}
                 {status === "success" && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-3.5 rounded-xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 text-xs font-mono-code flex items-center gap-2"
+                    className="p-4 rounded-2xl bg-emerald-950/40 border border-emerald-500/30 text-emerald-400 text-xs font-mono-code flex items-center gap-2"
                   >
                     <CheckCircle2 size={16} className="flex-shrink-0" />
                     <span>Message delivered successfully! I will reach out soon.</span>
@@ -280,14 +279,14 @@ const Contact = () => {
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    className="p-3.5 rounded-xl bg-red-950/40 border border-red-500/30 text-red-400 text-xs font-mono-code flex items-center gap-2"
+                    className="p-4 rounded-2xl bg-rose-950/40 border border-rose-500/30 text-rose-400 text-xs font-mono-code flex items-center gap-2"
                   >
                     <AlertCircle size={16} className="flex-shrink-0" />
                     <span>Failed to deliver message. Please email me directly at rajanverma0879@gmail.com</span>
                   </motion.div>
                 )}
               </form>
-            </motion.div>
+            </div>
           </div>
         </div>
       </div>
