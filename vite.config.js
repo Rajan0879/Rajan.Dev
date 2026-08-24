@@ -6,13 +6,25 @@ import path from 'path'
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react(),
+  plugins: [
+    react(),
     tailwindcss()
-    
   ],
   resolve: {
     alias: {
-      '@': path.resolve(__dirname, './src') // ✅ enables @/lib/utils
+      '@': path.resolve(__dirname, './src')
+    }
+  },
+  build: {
+    chunkSizeWarningLimit: 800,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
+          'motion-vendor': ['framer-motion', 'gsap', 'lenis'],
+          'ui-vendor': ['lucide-react', 'react-icons', 'sonner']
+        }
+      }
     }
   }
 })

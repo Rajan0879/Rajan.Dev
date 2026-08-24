@@ -1,5 +1,6 @@
 html,
 body {
-  scroll-behavior: auto; 
+  scroll-behavior: auto;
   overflow-x: hidden;
+  background-color: #080808;
 }
