@@ -44,7 +44,7 @@ export const projects = [
       "Integrated Google Gemini generative AI API with structured system prompts to return pinpoint refactoring suggestions. Features dynamic syntax highlighting, multi-language code parsing, and instant actionable reviews.",
     image: aiReviewer,
     tags: ["React.js", "Google Gemini API", "Tailwind CSS", "Monaco Editor", "Express.js"],
-    github: "https://github.com/boylish/AI-Code-Reviewer",
+    github: "https://github.com/Rajan0879/AI-Code-Reviewer",
     demo: "https://ai-code-reviewer-vins.onrender.com/",
     featured: true,
     accent: "from-rose-600/20 to-zinc-900/40"
@@ -61,7 +61,7 @@ export const projects = [
       "Constructed on the MERN stack with JWT authentication and secure session cookies. Provides interactive drag-and-drop task workflows, team member privilege management, and insightful productivity telemetry.",
     image: "https://images.unsplash.com/photo-1540350394557-8d14678e7f91?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80",
     tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS", "JWT"],
-    github: "https://github.com/boylish/TaskManager",
+    github: "https://github.com/Rajan0879/TaskManager",
     demo: "https://task-manager0879.netlify.app/",
     featured: true,
     accent: "from-red-700/20 to-neutral-900/40"
@@ -78,7 +78,7 @@ export const projects = [
       "Engineered backend REST endpoints for product catalogue management, inventory tracking, order history, and customer authentication. Optimized MongoDB indexing for millisecond response times.",
     image: bookstore,
     tags: ["React.js", "Redux Toolkit", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
-    github: "https://github.com/boylish/BookStore",
+    github: "https://github.com/Rajan0879/BookStore",
     demo: "https://bookstore-07.netlify.app/",
     featured: true,
     accent: "from-crimson-600/20 to-stone-900/40"
@@ -95,7 +95,7 @@ export const projects = [
       "Leveraged Next.js App Router for optimal SEO indexing and fast server-side rendering, paired with MongoDB for flexible vehicle attribute schemas.",
     image: sellCar,
     tags: ["Next.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
-    github: "https://github.com/boylish/Car-Sell-WebApp",
+    github: "https://github.com/Rajan0879/Car-Sell-WebApp",
     demo: "https://car-sell-web-app.vercel.app/",
     featured: false,
     accent: "from-red-500/20 to-zinc-900/40"
@@ -112,7 +112,7 @@ export const projects = [
       "Provides real-time typing indicators, customizable automated intent matching, and clean UI integration for customer support workflows.",
     image: chatbot,
     tags: ["React.js", "Node.js", "MongoDB", "Express.js", "Tailwind CSS"],
-    github: "https://github.com/boylish/E-commerce_Chatbot",
+    github: "https://github.com/Rajan0879/E-commerce_Chatbot",
     demo: "https://chatbot0879.netlify.app/",
     featured: false,
     accent: "from-rose-500/20 to-neutral-900/40"
@@ -129,7 +129,7 @@ export const projects = [
       "Built to demonstrate advanced frontend motion engineering with zero layout jank, optimized paint cycles, and 60fps smooth scrolling.",
     image: intelion,
     tags: ["JavaScript (ES6+)", "React.js", "GSAP", "ScrollTrigger", "Tailwind CSS"],
-    github: "https://github.com/boylish/Intelion-Landing-Page",
+    github: "https://github.com/Rajan0879/Intelion-Landing-Page",
     demo: "https://intelion-landing-page-two.vercel.app/",
     featured: false,
     accent: "from-red-600/20 to-zinc-900/40"
@@ -146,7 +146,7 @@ export const projects = [
       "Focused on high-converting visual hierarchy, custom vector assets, and flawless cross-browser compatibility.",
     image: MarketingComp,
     tags: ["React.js", "Tailwind CSS", "Framer Motion", "UI Design"],
-    github: "https://github.com/boylish/GIF_Studio_Task",
+    github: "https://github.com/Rajan0879/GIF_Studio_Task",
     demo: "https://gif-studio-task.netlify.app/",
     featured: false,
     accent: "from-red-800/20 to-black/60"

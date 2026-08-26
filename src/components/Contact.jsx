@@ -153,7 +153,7 @@ const Contact = () => {
               {/* Social Grid */}
               <div className="pt-6 mt-6 border-t border-white/[0.05] grid grid-cols-2 gap-3">
                 <a
-                  href="https://linkedin.com/in/rajanverma"
+                  href="https://www.linkedin.com/in/rajan-verma-10363124a/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-rose-500/30 hover:bg-white/[0.05] transition-all flex items-center justify-center gap-2 text-xs font-medium text-zinc-300 hover:text-white"
@@ -164,7 +164,7 @@ const Contact = () => {
                 </a>
 
                 <a
-                  href="https://github.com/boylish"
+                  href="https://github.com/Rajan0879"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3.5 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-rose-500/30 hover:bg-white/[0.05] transition-all flex items-center justify-center gap-2 text-xs font-medium text-zinc-300 hover:text-white"

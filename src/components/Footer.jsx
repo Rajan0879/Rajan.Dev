@@ -36,7 +36,7 @@ const Footer = () => {
           {/* Social Links & Back-To-Top Button */}
           <div className="flex items-center gap-4">
             <a
-              href="https://github.com/boylish"
+              href="https://github.com/Rajan0879"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
@@ -45,7 +45,7 @@ const Footer = () => {
               <Github size={18} />
             </a>
             <a
-              href="https://linkedin.com/in/rajanverma"
+              href="https://www.linkedin.com/in/rajan-verma-10363124a/"
               target="_blank"
               rel="noopener noreferrer"
               aria-label="LinkedIn"

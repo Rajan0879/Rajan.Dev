@@ -177,10 +177,10 @@ const Navbar = () => {
               </a>
 
               <div className="flex items-center justify-center gap-6 pt-2 text-zinc-400">
-                <a href="https://github.com/boylish" target="_blank" rel="noopener noreferrer" className="hover:text-rose-400 transition-colors">
+                <a href="https://github.com/Rajan0879" target="_blank" rel="noopener noreferrer" className="hover:text-rose-400 transition-colors">
                   <Github size={20} />
                 </a>
-                <a href="https://linkedin.com/in/rajanverma" target="_blank" rel="noopener noreferrer" className="hover:text-rose-400 transition-colors">
+                <a href="https://www.linkedin.com/in/rajan-verma-10363124a/" target="_blank" rel="noopener noreferrer" className="hover:text-rose-400 transition-colors">
                   <Linkedin size={20} />
                 </a>
                 <a href="mailto:rajanverma0879@gmail.com" className="hover:text-rose-400 transition-colors">
