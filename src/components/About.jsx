@@ -130,10 +130,10 @@ const About = () => {
             {/* Resume Button */}
             <div className="pt-2 flex flex-wrap items-center gap-4">
               <a
-                href="/Rajan_Verma_Resume.pdf"
+                href="/Rajan%20Verma%20%20Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                download="Rajan_Verma_Resume.pdf"
+                download="Rajan Verma  Resume.pdf"
                 className="group inline-flex items-center gap-2.5 px-6 py-3.5 bg-rose-600 hover:bg-rose-500 text-white font-medium text-xs sm:text-sm rounded-full shadow-lg shadow-rose-600/20 hover:shadow-rose-600/40 transition-all hover:scale-[1.02] active:scale-[0.98]"
               >
                 <FileText size={15} />
