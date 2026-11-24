@@ -39,6 +39,221 @@
   }
 }
 
+/* Professional Masculine Slate / Navy Light Theme */
+html.light {
+  color-scheme: light;
+}
+
+html.light body,
+html.light .min-h-screen.bg-\[\#080808\] {
+  background-color: #f1f5f9 !important;
+  color: #0f172a !important;
+}
+
+html.light main,
+html.light section {
+  background-color: transparent !important;
+}
+
+/* Light Theme Component Cards & Panels */
+html.light .bg-\[\#060608\],
+html.light .bg-\[\#070709\],
+html.light .bg-\[\#080808\],
+html.light .bg-\[\#0a0a0c\],
+html.light .bg-\[\#0c0c10\],
+html.light .bg-black\/60,
+html.light .bg-zinc-950,
+html.light .luxury-glass,
+html.light .luxury-card {
+  background-color: #ffffff !important;
+  border-color: #cbd5e1 !important;
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04) !important;
+}
+
+/* Text Adjustments for Light Theme */
+html.light :not(footer) > .text-white,
+html.light main .text-white,
+html.light header .text-white {
+  color: #0f172a !important;
+}
+
+/* Ensure buttons and badges with colored/red backgrounds keep pure white text */
+html.light .bg-rose-600,
+html.light .bg-rose-500,
+html.light .bg-rose-600 *,
+html.light .bg-rose-500 *,
+html.light [class*="bg-rose-600"],
+html.light [class*="bg-rose-600"] *,
+html.light [class*="bg-rose-500"],
+html.light [class*="bg-rose-500"] * {
+  color: #ffffff !important;
+}
+
+html.light main .text-zinc-300,
+html.light main .text-zinc-400,
+html.light header .text-zinc-300,
+html.light header .text-zinc-400 {
+  color: #334155 !important;
+}
+
+html.light main .text-zinc-500,
+html.light main .text-zinc-600,
+html.light header .text-zinc-500,
+html.light header .text-zinc-600 {
+  color: #64748b !important;
+}
+
+/* Contact Me Button in Hero on Light Theme: Dark text and dark icon */
+html.light .hero-contact-btn,
+html.light .hero-contact-btn *,
+html.light .hero-contact-btn span,
+html.light .hero-contact-btn svg {
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light .hero-contact-btn:hover {
+  background-color: #ffffff !important;
+  border-color: #f43f5e !important;
+  color: #f43f5e !important;
+}
+
+html.light .hero-contact-btn:hover * {
+  color: #f43f5e !important;
+}
+
+/* Borders in Light Theme */
+html.light .border-white\/\[0\.05\],
+html.light .border-white\/\[0\.06\],
+html.light .border-white\/\[0\.07\],
+html.light .border-white\/\[0\.08\],
+html.light .border-white\/10 {
+  border-color: #e2e8f0 !important;
+}
+
+/* Accent Colors (Consistent in both Dark & Light Themes) */
+html.light .text-rose-400 {
+  color: #fb7185 !important;
+}
+
+html.light .text-rose-500 {
+  color: #f43f5e !important;
+}
+
+html.light .bg-rose-600 {
+  background-color: #e11d48 !important;
+}
+
+html.light .bg-rose-500 {
+  background-color: #f43f5e !important;
+}
+
+html.light .bg-rose-600\/20,
+html.light .bg-rose-600\/25,
+html.light .bg-rose-500\/10,
+html.light .bg-rose-500\/15 {
+  background-color: rgba(244, 63, 94, 0.12) !important;
+}
+
+html.light .border-rose-500,
+html.light .border-rose-500\/20,
+html.light .border-rose-500\/30 {
+  border-color: rgba(244, 63, 94, 0.35) !important;
+}
+
+html.light .shadow-rose-600\/20,
+html.light .shadow-rose-600\/25,
+html.light .shadow-rose-600\/30,
+html.light .shadow-rose-600\/40 {
+  box-shadow: 0 10px 25px -5px rgba(225, 29, 72, 0.25) !important;
+}
+
+/* Ensure Footer remains 100% untouched Dark Theme in all modes */
+footer,
+html.light footer {
+  background-color: #040405 !important;
+  color: #a1a1aa !important;
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+html.light footer * {
+  border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+html.light footer .text-white {
+  color: #ffffff !important;
+}
+
+html.light footer .text-zinc-400 {
+  color: #a1a1aa !important;
+}
+
+html.light footer .text-zinc-500 {
+  color: #71717a !important;
+}
+
+html.light footer .bg-white\/\[0\.03\] {
+  background-color: rgba(255, 255, 255, 0.03) !important;
+}
+
+html.light footer .bg-red-600\/80 {
+  background-color: rgba(220, 38, 38, 0.8) !important;
+}
+
+/* White Icons Adaptation in Light Theme */
+html.light img[src*="simpleicons.org/nextdotjs"],
+html.light img[src*="simpleicons.org/shadcnui"],
+html.light img[src*="simpleicons.org/express"],
+html.light img[src*="simpleicons.org/jsonwebtokens"],
+html.light img[src*="simpleicons.org/vercel"],
+html.light img[src*="/white"] {
+  filter: invert(1) brightness(0.2) !important;
+}
+
+/* Hide dark ambient radial glows in light mode */
+html.light .pointer-events-none[class*="blur-"] {
+  opacity: 0.15 !important;
+}
+html.light header nav {
+  background-color: rgba(255, 255, 255, 0.85) !important;
+  border-color: #cbd5e1 !important;
+  backdrop-filter: blur(20px);
+}
+
+html.light .bg-white\/\[0\.015\],
+html.light .bg-white\/\[0\.02\],
+html.light .bg-white\/\[0\.03\],
+html.light .bg-white\/\[0\.04\],
+html.light .bg-white\/5 {
+  background-color: #f8fafc !important;
+  border-color: #e2e8f0 !important;
+}
+
+/* Input Fields in Light Theme */
+html.light input,
+html.light textarea {
+  background-color: #ffffff !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Scrollbar for Light Theme */
+html.light ::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #2563eb;
+}
 /* Lenis Smooth Scrolling Optimization */
 html.lenis, html.lenis body {
   height: auto;

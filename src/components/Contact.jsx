@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, Github, Linkedin, ArrowUpRight, CheckCircle2, AlertCircle } from "lucide-react";
+import { Mail, Phone, MapPin, Send, Github, Linkedin, ArrowUpRight, CheckCircle2, AlertCircle, MessageCircle } from "lucide-react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { toast } from "sonner";
@@ -124,6 +124,46 @@ const Contact = () => {
                     </p>
                   </div>
                 </a>
+
+                {/* Phone & Direct Call Action */}
+                <div className="flex items-center justify-between p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-rose-500/30 transition-colors group">
+                  <div className="flex items-center gap-4">
+                    <div className="p-2.5 rounded-xl bg-rose-500/10 text-rose-400">
+                      <Phone size={18} />
+                    </div>
+                    <div>
+                      <p className="text-xs text-zinc-500 font-mono-code">Phone / WhatsApp</p>
+                      <a
+                        href="tel:+919956561803"
+                        className="text-sm font-medium text-white group-hover:text-rose-400 transition-colors"
+                      >
+                        +91 9956561803
+                      </a>
+                    </div>
+                  </div>
+
+                  <div className="flex items-center gap-2">
+                    <a
+                      href="tel:+919956561803"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-600 hover:bg-rose-500 text-white font-medium text-xs shadow-md shadow-rose-600/20 transition-all hover:scale-105 active:scale-95"
+                      title="Call Rajan Verma"
+                    >
+                      <Phone size={12} />
+                      <span>Call</span>
+                    </a>
+
+                    <a
+                      href="https://wa.me/919956561803"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-600 hover:bg-emerald-500 text-white font-medium text-xs shadow-md shadow-emerald-600/20 transition-all hover:scale-105 active:scale-95"
+                      title="Chat on WhatsApp"
+                    >
+                      <MessageCircle size={12} />
+                      <span>WhatsApp</span>
+                    </a>
+                  </div>
+                </div>
 
                 <div className="flex items-center gap-4 p-4 rounded-2xl bg-white/[0.02] border border-white/[0.05]">
                   <div className="p-2.5 rounded-xl bg-white/[0.04] text-zinc-400">

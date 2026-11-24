@@ -11,7 +11,7 @@ import CustomCursor from "../components/CustomCursor";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-[#080808] text-white selection:bg-red-500 selection:text-white relative overflow-x-hidden">
+    <div className="min-h-screen bg-[#080808] dark:bg-[#080808] text-white relative overflow-x-hidden transition-colors duration-300">
       {/* Top Scroll Indicator */}
       <ScrollProgress />
 

@@ -7,7 +7,7 @@ const stats = [
     value: "1+",
     suffix: "Yrs",
     label: "Professional Engineering",
-    sublabel: "Healthligence & Clearcatnet",
+    sublabel: "Healthligence - Akrabhi Softlabs & Clearcatnet",
   },
   {
     value: "10+",
@@ -16,7 +16,7 @@ const stats = [
     sublabel: "Full-Stack Web & Mobile",
   },
   {
-    value: "500+",
+    value: "150+",
     suffix: "DSA",
     label: "Algorithmic Problems",
     sublabel: "LeetCode & Problem Solving",
@@ -97,7 +97,7 @@ const About = () => {
               
               <div className="space-y-4 text-sm sm:text-base text-zinc-400 font-body leading-relaxed">
                 <p>
-                  I am a B.Tech graduate in Information Technology (2025) with over a year of professional experience building enterprise and product web applications. Currently, I work as an <strong className="text-white font-medium">Associate Software Development Engineer – 1 at Healthligence</strong>, developing Next.js applications and packaging cross-platform mobile apps with Capacitor.
+                  I am a B.Tech graduate in Information Technology (2025) with over a year of professional experience building enterprise and product web applications. I previously worked as an <strong className="text-white font-medium">Associate Software Development Engineer – 1 at Healthligence - Akrabhi Softlabs Private Limited</strong> (till 31 October 2026), developing Next.js applications and packaging cross-platform mobile apps with Capacitor. Now I am open to work and actively seeking full-time roles.
                 </p>
                 <p>
                   Previously, at <strong className="text-white font-medium">Clearcatnet</strong>, I had full-stack engineering responsibility for the <strong className="text-rose-400 font-medium">Learnees</strong> learning platform across Next.js frontend architectures, Node.js/Firebase APIs, and authentication workflows.

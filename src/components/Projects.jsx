@@ -1,7 +1,7 @@
 import { useState, useMemo } from "react";
 import ProjectCard from "./ProjectCard";
 import { projects, projectCategories } from "../data/projects";
-import { ArrowUpRight, Github, Sparkles, FolderGit2 } from "lucide-react";
+import { ArrowUpRight, Github, Sparkles, FolderGit2, Building2, Lock } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Projects = () => {
@@ -13,8 +13,8 @@ const Projects = () => {
     return projects.filter((p) => p.category === activeCategory);
   }, [activeCategory]);
 
-  const spotlightProject = filteredProjects[0];
-  const restProjects = filteredProjects.slice(1);
+  const spotlightProjects = filteredProjects.slice(0, 3);
+  const restProjects = filteredProjects.slice(3);
 
   return (
     <section
@@ -64,8 +64,9 @@ const Projects = () => {
         </motion.div>
 
         {/* 1. Flagship Spotlight Showcase */}
-        {spotlightProject && (
+        {spotlightProjects.map((spotlightProject, sIdx) => (
           <motion.div
+            key={spotlightProject.id}
             initial={{ opacity: 0, y: 40 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
@@ -91,7 +92,7 @@ const Projects = () => {
                   <div>
                     <div className="flex items-center gap-2 mb-3">
                       <span className="px-3 py-1 rounded-full text-[11px] font-mono-code font-bold uppercase bg-rose-500/15 text-rose-400 border border-rose-500/30">
-                        Featured Production Platform
+                        {spotlightProject.badge || "Featured Production Platform"}
                       </span>
                     </div>
 
@@ -117,39 +118,44 @@ const Projects = () => {
                   </div>
 
                   {/* CTAs */}
-                  <div className="flex items-center gap-4 pt-2">
+                  <div className="flex flex-wrap items-center gap-3 sm:gap-4 pt-2">
                     {spotlightProject.demo && (
                       <a
                         href={spotlightProject.demo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="group/btn inline-flex items-center gap-2 px-6 py-3.5 bg-rose-600 hover:bg-rose-500 text-white font-medium text-xs rounded-full shadow-lg shadow-rose-600/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
+                        className="group/btn flex-shrink-0 whitespace-nowrap inline-flex items-center gap-2 px-5 sm:px-6 py-3 sm:py-3.5 bg-rose-600 hover:bg-rose-500 text-white font-medium text-xs rounded-full shadow-lg shadow-rose-600/25 transition-all hover:scale-[1.02] active:scale-[0.98]"
                       >
-                        <span>Live Platform</span>
+                        <span className="whitespace-nowrap">Live Platform</span>
                         <ArrowUpRight
                           size={14}
-                          className="group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
+                          className="flex-shrink-0 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5 transition-transform"
                         />
                       </a>
                     )}
 
-                    {spotlightProject.github && (
+                    {spotlightProject.github ? (
                       <a
                         href={spotlightProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 px-5 py-3.5 bg-white/[0.03] hover:bg-white/[0.08] text-zinc-300 hover:text-white font-medium text-xs rounded-full border border-white/[0.08] hover:border-rose-500/30 transition-colors"
+                        className="flex-shrink-0 whitespace-nowrap inline-flex items-center gap-2 px-5 py-3 sm:py-3.5 bg-white/[0.03] hover:bg-white/[0.08] text-zinc-300 hover:text-white font-medium text-xs rounded-full border border-white/[0.08] hover:border-rose-500/30 transition-colors"
                       >
-                        <Github size={14} />
-                        <span>Source Code</span>
+                        <Github size={14} className="flex-shrink-0" />
+                        <span className="whitespace-nowrap">Source Code</span>
                       </a>
+                    ) : (
+                      <div className="flex-shrink-0 whitespace-nowrap inline-flex items-center gap-2 px-4 py-3 sm:py-3.5 rounded-full bg-white/[0.02] border border-white/[0.06] text-zinc-400 text-xs font-mono-code">
+                        <Lock size={12} className="flex-shrink-0 text-zinc-500" />
+                        <span className="whitespace-nowrap">Company Project • Proprietary Code</span>
+                      </div>
                     )}
                   </div>
                 </div>
               </div>
             </div>
           </motion.div>
-        )}
+        ))}
 
         {/* 2. Grid of Secondary Projects */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">

@@ -5,6 +5,8 @@ import sellCar from "../assets/sellCar.png";
 import MarketingComp from "../assets/MarketingComp.png";
 import chatbot from "../assets/chatbot.png";
 import learnees from "../assets/learnees.png";
+import makeDonkey from "../assets/make-donkey.png";
+import exampix from "../assets/exampix.png";
 
 export const projectCategories = [
   { id: "all", name: "All Projects" },
@@ -21,6 +23,7 @@ export const projects = [
     title: "Learnees — Next-Gen Learning Platform",
     category: "fullstack",
     tagline: "Full-Stack EdTech Web Application",
+    badge: "Featured Production Platform",
     description:
       "A comprehensive, production-grade learning management platform engineered with end-to-end responsibility. Features role-based authentication, interactive course modules, cloud media storage, user progress analytics, and responsive real-time workflows.",
     longDescription:
@@ -29,15 +32,35 @@ export const projects = [
     tags: ["Next.js", "Node.js", "Firebase", "Tailwind CSS", "REST APIs", "Cloud Auth"],
     demo: "https://learnees.com/",
     github: null, // Private commercial repository
+    commercialNote: "Company Project • Proprietary Codebase",
     featured: true,
     accent: "from-red-600/20 to-red-900/40"
   },
   {
     id: 2,
     featuredNumber: "02",
+    title: "Make Donkey — Real-Time Multiplayer Card Game",
+    category: "fullstack",
+    tagline: "Real-Time Multiplayer Web Game",
+    badge: "Featured Multiplayer Game",
+    description:
+      "A fast-paced, real-time multiplayer web adaptation of the classic Make Donkey (Get Away) card game. Built with an authoritative Node.js/Socket.IO backend and a responsive React frontend, featuring private room lobbies, suit-following logic, automatic timeout handling, and peer-to-peer WebSockets/WebRTC voice chat.",
+    longDescription:
+      "Engineered game room state machines with authoritative server-side validation, turn timers, disconnected player recovery, and synchronized low-latency gameplay over WebSockets.",
+    image: makeDonkey,
+    tags: ["React.js", "Node.js", "Socket.IO", "WebRTC", "Tailwind CSS", "WebSockets"],
+    demo: "https://make-donkey.netlify.app/",
+    github: "https://github.com/Rajan0879/Make-Donkey-Card-Game",
+    featured: true,
+    accent: "from-amber-600/20 to-rose-900/40"
+  },
+  {
+    id: 3,
+    featuredNumber: "03",
     title: "AI Code Reviewer & Analyzer",
     category: "ai",
     tagline: "Intelligent Developer Productivity Tool",
+    badge: "Featured AI Platform",
     description:
       "An automated code inspection platform powered by Google Gemini AI. Evaluates source code for syntax errors, edge cases, algorithmic time complexity, and security vulnerabilities with real-time markdown feedback and an embedded code editor.",
     longDescription:
@@ -50,8 +73,25 @@ export const projects = [
     accent: "from-rose-600/20 to-zinc-900/40"
   },
   {
-    id: 3,
-    featuredNumber: "03",
+    id: 4,
+    featuredNumber: "04",
+    title: "ExamPix — Document & Photo Optimizer",
+    category: "ai",
+    tagline: "Exam Document Optimization & Compression Suite",
+    description:
+      "A web application designed to help Indian government exam aspirants resize, compress, crop, and optimize photos, signatures, thumb impressions, and other documents according to official exam requirements. Built with a modern SaaS-inspired UI, it provides exam-specific document presets, instant previews, and easy download.",
+    longDescription:
+      "Engineered client-side canvas and image-processing pipelines with custom compression algorithms, aspect-ratio constraint presets for various competitive exams, and instant batch processing with zero server-side storage overhead.",
+    image: exampix,
+    tags: ["React.js", "Canvas API", "Tailwind CSS", "Image Processing", "JavaScript (ES6+)"],
+    github: "https://github.com/Rajan0879/Exam-Pix",
+    demo: "https://exampix.netlify.app/",
+    featured: true,
+    accent: "from-blue-600/20 to-zinc-900/40"
+  },
+  {
+    id: 5,
+    featuredNumber: "05",
     title: "Productivity Dashboard & Task Manager",
     category: "fullstack",
     tagline: "Collaborative Team Workflow Suite",
@@ -67,8 +107,8 @@ export const projects = [
     accent: "from-red-700/20 to-neutral-900/40"
   },
   {
-    id: 4,
-    featuredNumber: "04",
+    id: 6,
+    featuredNumber: "06",
     title: "Online Bookstore & E-Commerce",
     category: "fullstack",
     tagline: "Full-Featured Digital Commerce Store",
@@ -84,8 +124,8 @@ export const projects = [
     accent: "from-crimson-600/20 to-stone-900/40"
   },
   {
-    id: 5,
-    featuredNumber: "05",
+    id: 7,
+    featuredNumber: "07",
     title: "CarSell — Auto Marketplace",
     category: "fullstack",
     tagline: "Automotive Listing & Discovery Portal",
@@ -101,8 +141,8 @@ export const projects = [
     accent: "from-red-500/20 to-zinc-900/40"
   },
   {
-    id: 6,
-    featuredNumber: "06",
+    id: 8,
+    featuredNumber: "08",
     title: "E-Commerce Conversational AI Chatbot",
     category: "ai",
     tagline: "Context-Aware Automated Assistant",
@@ -118,8 +158,8 @@ export const projects = [
     accent: "from-rose-500/20 to-neutral-900/40"
   },
   {
-    id: 7,
-    featuredNumber: "07",
+    id: 9,
+    featuredNumber: "09",
     title: "Intelion Interactive Motion Experience",
     category: "frontend",
     tagline: "High-Performance GSAP Animated Showcase",
@@ -135,8 +175,8 @@ export const projects = [
     accent: "from-red-600/20 to-zinc-900/40"
   },
   {
-    id: 8,
-    featuredNumber: "08",
+    id: 10,
+    featuredNumber: "10",
     title: "Marketing Studio Digital Showcase",
     category: "frontend",
     tagline: "Creative Agency Experience",

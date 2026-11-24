@@ -2,12 +2,11 @@ export const experiences = [
   {
     id: "healthligence",
     role: "Associate Software Development Engineer – 1",
-    company: "Healthligence",
-    parentCompany: "Akrahi Softlabs Private Limited",
+    company: "Healthligence - Akrabhi Softlabs Private Limited",
     type: "Full-time",
     location: "Remote",
-    period: "December 2025 – Present",
-    current: true,
+    period: "December 2025 – October 2026",
+    current: false,
     highlights: [
       "Developing the company's flagship product applications using Next.js, contributing to responsive interfaces, reusable component libraries, and core application workflows.",
       "Building and packaging Android applications using Capacitor, enabling web-based products to be delivered natively as high-performance cross-platform mobile apps.",

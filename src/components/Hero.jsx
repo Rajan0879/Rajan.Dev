@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail, FileText, ArrowRight } from "lucide-react";
+import { ArrowDown, ArrowUpRight, Github, Linkedin, Mail, FileText, ArrowRight, Phone, MessageCircle } from "lucide-react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import gsap from "gsap";
-import rajanHd from "../assets/rajan_hd.jpg";
+import mineImg from "../assets/mine.jpg";
 
 const Hero = () => {
   const containerRef = useRef(null);
@@ -18,39 +18,69 @@ const Hero = () => {
     const shine = shineRef.current;
     if (!card) return;
 
+    // Set initial 3D perspective once
+    gsap.set(card, { transformPerspective: 1000, transformStyle: "preserve-3d" });
+
     const handleMouseMove = (e) => {
       if (window.innerWidth < 1024) return;
       const rect = card.getBoundingClientRect();
+
+      // Only apply tilt when the mouse is over or close to the card
+      const isHovering =
+        e.clientX >= rect.left - 50 &&
+        e.clientX <= rect.right + 50 &&
+        e.clientY >= rect.top - 50 &&
+        e.clientY <= rect.bottom + 50;
+
+      if (!isHovering) {
+        gsap.to(card, {
+          rotateX: 0,
+          rotateY: 0,
+          x: 0,
+          y: 0,
+          ease: "power2.out",
+          duration: 0.6,
+          overwrite: "auto",
+        });
+        if (shine) {
+          gsap.to(shine, {
+            background: "transparent",
+            duration: 0.4,
+            overwrite: "auto",
+          });
+        }
+        return;
+      }
+
       const cardCenterX = rect.left + rect.width / 2;
       const cardCenterY = rect.top + rect.height / 2;
 
-      // Mouse distance relative to card center (-1 to 1 normalized range)
-      const deltaX = (e.clientX - cardCenterX) / (window.innerWidth / 2);
-      const deltaY = (e.clientY - cardCenterY) / (window.innerHeight / 2);
+      // Mouse distance relative to card bounds (-1 to 1)
+      const deltaX = (e.clientX - cardCenterX) / (rect.width / 2);
+      const deltaY = (e.clientY - cardCenterY) / (rect.height / 2);
 
-      // Deep responsive 3D bend
-      const rotateX = -deltaY * 22;
-      const rotateY = deltaX * 22;
-      const moveX = deltaX * 12;
-      const moveY = deltaY * 12;
+      // Smooth subtle tilt
+      const rotateX = -deltaY * 10;
+      const rotateY = deltaX * 10;
 
       gsap.to(card, {
         rotateX: rotateX,
         rotateY: rotateY,
-        x: moveX,
-        y: moveY,
-        transformPerspective: 900,
+        x: 0,
+        y: 0,
         ease: "power2.out",
-        duration: 0.35,
+        duration: 0.3,
+        overwrite: "auto",
       });
 
       if (shine) {
-        const shineX = (e.clientX - rect.left) / rect.width * 100;
-        const shineY = (e.clientY - rect.top) / rect.height * 100;
+        const shineX = ((e.clientX - rect.left) / rect.width) * 100;
+        const shineY = ((e.clientY - rect.top) / rect.height) * 100;
         gsap.to(shine, {
-          background: `radial-gradient(circle at ${shineX}% ${shineY}%, rgba(255,255,255,0.18) 0%, transparent 60%)`,
+          background: `radial-gradient(circle at ${shineX}% ${shineY}%, rgba(255,255,255,0.14) 0%, transparent 65%)`,
           ease: "power1.out",
           duration: 0.2,
+          overwrite: "auto",
         });
       }
     };
@@ -61,22 +91,26 @@ const Hero = () => {
         rotateY: 0,
         x: 0,
         y: 0,
-        ease: "power3.out",
-        duration: 0.8,
+        ease: "power2.out",
+        duration: 0.6,
+        overwrite: "auto",
       });
       if (shine) {
         gsap.to(shine, {
           background: "transparent",
-          duration: 0.5,
+          duration: 0.4,
+          overwrite: "auto",
         });
       }
     };
 
     window.addEventListener("mousemove", handleMouseMove, { passive: true });
+    card.addEventListener("mouseleave", handleMouseLeave);
     document.addEventListener("mouseleave", handleMouseLeave);
 
     return () => {
       window.removeEventListener("mousemove", handleMouseMove);
+      card.removeEventListener("mouseleave", handleMouseLeave);
       document.removeEventListener("mouseleave", handleMouseLeave);
     };
   }, []);
@@ -110,7 +144,7 @@ const Hero = () => {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-rose-500" />
               </span>
               <span className="text-xs font-medium text-zinc-300 tracking-wide">
-                Associate SDE-1 @ Healthligence • Available for Roles
+                Ex Associate SDE-1 @ Healthligence - Akrabhi Softlabs • Open to Work
               </span>
             </motion.div>
 
@@ -144,32 +178,52 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 }}
-              className="mt-10 flex flex-wrap items-center gap-4 w-full sm:w-auto"
+              className="mt-10 flex flex-wrap items-center gap-3.5 w-full sm:w-auto"
             >
               <a
                 href="#projects"
-                className="group relative inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-rose-600 hover:bg-rose-500 text-white font-medium text-sm rounded-full shadow-xl shadow-rose-600/20 hover:shadow-rose-600/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
+                className="group relative inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-rose-600 hover:bg-rose-500 text-white font-medium text-xs sm:text-sm rounded-full shadow-xl shadow-rose-600/20 hover:shadow-rose-600/40 hover:scale-[1.02] active:scale-[0.98] transition-all duration-300"
               >
                 <span>View Selected Works</span>
-                <ArrowRight size={15} className="group-hover:translate-x-0.5 transition-transform" />
+                <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
               </a>
 
               <a
                 href="#contact"
-                className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-white/[0.03] hover:bg-white/[0.08] text-zinc-200 hover:text-white font-medium text-sm rounded-full border border-white/[0.08] hover:border-rose-500/30 transition-all duration-300 backdrop-blur-sm"
+                className="group hero-contact-btn inline-flex items-center justify-center gap-2 px-5 py-3.5 bg-white/[0.04] hover:bg-white/[0.08] text-zinc-200 hover:text-white font-medium text-xs sm:text-sm rounded-full border border-white/[0.1] hover:border-rose-500/30 transition-all duration-300 backdrop-blur-sm"
               >
                 <span>Contact Me</span>
-                <ArrowUpRight size={15} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              </a>
+
+              <a
+                href="tel:+919956561803"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 bg-white/[0.04] hover:bg-white/[0.08] text-zinc-300 hover:text-rose-400 font-medium text-xs sm:text-sm rounded-full border border-white/[0.1] hover:border-rose-500/30 transition-all duration-300"
+                title="Call Rajan Verma"
+              >
+                <Phone size={14} className="text-rose-400" />
+                <span>Call</span>
+              </a>
+
+              <a
+                href="https://wa.me/919956561803"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 bg-white/[0.04] hover:bg-white/[0.08] text-zinc-300 hover:text-emerald-400 font-medium text-xs sm:text-sm rounded-full border border-white/[0.1] hover:border-emerald-500/30 transition-all duration-300"
+                title="Chat on WhatsApp"
+              >
+                <MessageCircle size={14} className="text-emerald-400" />
+                <span>WhatsApp</span>
               </a>
 
               <a
                 href="/Rajan%20Verma%20Resume.pdf"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3.5 text-zinc-400 hover:text-rose-400 text-sm font-medium transition-colors"
+                className="inline-flex items-center justify-center gap-1.5 px-4 py-3.5 text-zinc-400 hover:text-rose-400 text-xs sm:text-sm font-medium transition-colors"
                 title="View Resume"
               >
-                <FileText size={15} />
+                <FileText size={14} />
                 <span>Resume</span>
               </a>
             </motion.div>
@@ -226,15 +280,15 @@ const Hero = () => {
 
               <div
                 ref={photoCardRef}
-                className="relative rounded-[32px] bg-[#0c0c10] border border-white/[0.08] p-3.5 shadow-2xl overflow-hidden backdrop-blur-2xl transition-all duration-300"
+                className="relative rounded-[32px] bg-[#0c0c10] border border-white/[0.08] p-3.5 shadow-2xl overflow-hidden backdrop-blur-2xl will-change-transform"
                 style={{ transformStyle: "preserve-3d" }}
               >
                 {/* Portrait Container */}
                 <div className="relative rounded-[26px] overflow-hidden aspect-[4/5] w-full bg-zinc-950 border border-white/[0.06] group shadow-inner">
                   <img
-                    src={rajanHd}
+                    src={mineImg}
                     alt="Rajan Verma"
-                    className="w-full h-full object-cover object-top contrast-[105%] group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="w-full h-full object-cover object-center contrast-[105%] group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
 
                   {/* Gradient Scrim */}

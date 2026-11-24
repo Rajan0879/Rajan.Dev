@@ -240,7 +240,7 @@ export const skills = [
     icon: "https://cdn.simpleicons.org/cplusplus/00599C",
   },
   {
-    name: "DSA (500+ Solved)",
+    name: "DSA (150+ Solved)",
     category: "foundations",
     badge: "Algorithms",
     level: 90,

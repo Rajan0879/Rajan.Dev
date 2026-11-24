@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowUpRight, Github, Linkedin, Mail } from "lucide-react";
+import { Menu, X, ArrowUpRight, Github, Linkedin, Mail, Sun, Moon } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -15,6 +15,25 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [theme, setTheme] = useState(() => {
+    return localStorage.getItem("theme") || "dark";
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+    if (theme === "light") {
+      root.classList.remove("dark");
+      root.classList.add("light");
+    } else {
+      root.classList.remove("light");
+      root.classList.add("dark");
+    }
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+  };
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
@@ -106,8 +125,17 @@ const Navbar = () => {
               })}
             </div>
 
-            {/* CTA Button */}
+            {/* CTA Button & Theme Toggle */}
             <div className="hidden md:flex items-center gap-3">
+              <button
+                onClick={toggleTheme}
+                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+                className="p-2 rounded-full text-zinc-300 hover:text-white bg-white/[0.04] hover:bg-white/[0.08] border border-white/[0.08] transition-all duration-200 cursor-pointer"
+                title={`Switch to ${theme === "dark" ? "Light" : "Dark"} Mode`}
+              >
+                {theme === "dark" ? <Sun size={15} className="text-amber-400" /> : <Moon size={15} className="text-sky-300" />}
+              </button>
+
               <a
                 href="#contact"
                 className="group inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold tracking-tight text-white bg-rose-600 hover:bg-rose-500 rounded-full shadow-lg shadow-rose-600/20 hover:shadow-rose-600/40 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
@@ -120,14 +148,24 @@ const Navbar = () => {
               </a>
             </div>
 
-            {/* Mobile Toggle Button */}
-            <button
-              onClick={toggleMenu}
-              aria-label={isMenuOpen ? "Close menu" : "Open menu"}
-              className="md:hidden p-2 rounded-full text-zinc-300 hover:text-white bg-white/5 border border-white/10 transition-colors"
-            >
-              {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
-            </button>
+            {/* Mobile Controls */}
+            <div className="md:hidden flex items-center gap-2">
+              <button
+                onClick={toggleTheme}
+                aria-label={`Switch to ${theme === "dark" ? "light" : "dark"} mode`}
+                className="p-2 rounded-full text-zinc-300 hover:text-white bg-white/5 border border-white/10 transition-colors"
+              >
+                {theme === "dark" ? <Sun size={16} className="text-amber-400" /> : <Moon size={16} className="text-sky-300" />}
+              </button>
+
+              <button
+                onClick={toggleMenu}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                className="p-2 rounded-full text-zinc-300 hover:text-white bg-white/5 border border-white/10 transition-colors"
+              >
+                {isMenuOpen ? <X size={20} /> : <Menu size={20} />}
+              </button>
+            </div>
           </nav>
         </div>
       </motion.header>
